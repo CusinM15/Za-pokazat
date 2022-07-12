@@ -1,0 +1,10 @@
+C:\Matej\Programiranje\c#\projekt\projekt\zacetno\bin\Debug\zacetno.exe.config
+C:\Matej\Programiranje\c#\projekt\projekt\zacetno\bin\Debug\zacetno.exe
+C:\Matej\Programiranje\c#\projekt\projekt\zacetno\bin\Debug\zacetno.pdb
+C:\Matej\Programiranje\c#\projekt\projekt\zacetno\obj\Debug\zacetno.csprojAssemblyReference.cache
+C:\Matej\Programiranje\c#\projekt\projekt\zacetno\obj\Debug\zacetno.Properties.Resources.resources
+C:\Matej\Programiranje\c#\projekt\projekt\zacetno\obj\Debug\zacetno.csproj.GenerateResource.cache
+C:\Matej\Programiranje\c#\projekt\projekt\zacetno\obj\Debug\zacetno.csproj.CoreCompileInputs.cache
+C:\Matej\Programiranje\c#\projekt\projekt\zacetno\obj\Debug\zacetno.exe
+C:\Matej\Programiranje\c#\projekt\projekt\zacetno\obj\Debug\zacetno.pdb
+C:\Matej\Programiranje\c#\projekt\projekt\zacetno\obj\Debug\zacetno.glavnoOkno.resources
