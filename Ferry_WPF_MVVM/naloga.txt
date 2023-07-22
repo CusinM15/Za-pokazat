@@ -1,0 +1,37 @@
+Naloga:
+Za pisanje aplikacije uporabite C# programski jezik. Naredite preprost UI z WPF ogrodjem v MVVM patternu, kjer vizualizirate potek programa.
+Koda mora biti modularna in lahko razširljiva.
+Na ustnem razgovoru boste prejeli 3 zelo kratke dodatne naloge, s katerimi boste preizkusili, ali je koda res lahko razširljiva.
+ 
+1. Sprogramirajte trajektni terminal. Vedno sta na voljo dve vrsti trajektov:
+   - majhni trajekti imajo prostor za 8 majhnih vozil (avtomobili plačajo 3 € / kombiji plačajo 4 €)
+   - veliki trajekti imajo prostor za 6 velikih vozil (avtobusi plačajo 5 € / tovornjaki plačajo 6 €)
+   Aplikacija mora prikazati ves prihodek od kart.
+   
+2. Vozila eno za drugim nenehno prihajajo na terminal v naključnem vrstnem redu.
+   Uslužbenec terminala obravnava vsako vozilo od prihoda do trajekta - njegova plača znaša 10% vsake karte za trajekt.
+   V aplikaciji mora biti prikazan njegov dohodek.
+   
+3. Vsako vozilo prispe z naključno količino goriva.
+   Če ima katerokoli vozilo manj kot 10% goriva, ga mora uslužbenec terminala natočiti na bencinski črpalki.
+   Aplikacija mora prikazati količino goriva za trenutno vozilo.
+   
+4. Vsak kombi in vsak tovornjak morata opraviti carinski pregled.
+   Uslužbenec terminala mora odpreti tovorna vrata za pregled.
+   Aplikacija mora prikazati, ali so tovorna vrata trenutnega vozila odprta ali zaprta.
+   
+5. Sledite vozilu od prihoda do trajekta.
+   Aplikacija mora prikazati ime zadnje obiskane lokacije.
+ 
+            A
+            |
+        G - + - S
+        |   |
+        C - + - L
+    
+        A - Prihod
+        G - Bencinska črpalka
+        S - Majhen trajekt
+        C - Carinski pregled
+        L - Velik trajekt
+

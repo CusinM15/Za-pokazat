@@ -1,0 +1,10 @@
+﻿<Application x:Class="FerryWPF.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:View="clr-namespace:FerryWPF.Business.View"
+             xmlns:local="clr-namespace:FerryWPF"
+             Startup="OnStartup">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>
