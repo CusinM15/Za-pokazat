@@ -25,12 +25,12 @@ namespace FerryWPF.Business.View
         private Label[] labels;
         private int currentLabelIndex = 0;
         private DispatcherTimer timer;
-        private readonly TerminallViewModel _viewModel;
+        private readonly TerminalViewModel _viewModel;
         public Terminal()
         {
             InitializeComponent();
 
-            _viewModel = new TerminallViewModel();
+            _viewModel = new TerminalViewModel();
             // The DataContext serves as the starting point of Binding Paths
             DataContext = _viewModel;
         }

@@ -10,7 +10,7 @@ using FerryWPF.Business.Enums;
 namespace FerryWPF.Business.VievModel
 {
 
-    public class TerminallViewModel : ViewModelBase
+    public class TerminalViewModel : ViewModelBase
     {
         public bool _running;
         public ICommand GoToCommand { get; set; }
@@ -37,7 +37,7 @@ namespace FerryWPF.Business.VievModel
             Interval = TimeSpan.FromSeconds(1)
         };
        
-        public TerminallViewModel()
+        public TerminalViewModel()
         {
             Vehicle elt = new Vehicle(2, 3);
             HideBtn = true;

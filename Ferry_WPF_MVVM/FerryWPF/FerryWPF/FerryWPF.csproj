@@ -121,7 +121,7 @@
     <Compile Include="Business\Repositories\GenericRepository.cs" />
     <Compile Include="Business\Services\PortService.cs" />
     <Compile Include="Business\VievModel\MainVievModel.cs" />
-    <Compile Include="Business\VievModel\TerminallViewModel.cs" />
+    <Compile Include="Business\VievModel\TerminalViewModel.cs" />
     <Compile Include="Business\View\MainWindovPort.xaml.cs">
       <DependentUpon>MainWindovPort.xaml</DependentUpon>
     </Compile>
