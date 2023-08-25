@@ -18,14 +18,12 @@ namespace FerryWPF.Business.View
     public partial class MainWindovPort : Window
     {
         private readonly MainVievModel _viewModel;
-        public bool IsVisibleProperty;
         public MainWindovPort()
         {
             InitializeComponent();
             _viewModel = new MainVievModel();
             // The DataContext serves as the starting point of Binding Paths
             DataContext = _viewModel;
-            
         }
     }
 }
