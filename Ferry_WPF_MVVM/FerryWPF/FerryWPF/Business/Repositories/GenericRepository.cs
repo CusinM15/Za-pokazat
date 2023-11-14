@@ -1,28 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-//using System.Data.SqlClient;
-using System.IO;
 using System.Linq;
-using System.Text;
 using System.Data.SQLite;
 using System.Data;
-using Dapper;
-using FerryWPF.Business.Models;
-using System.Data.SqlClient;
 using System.Reflection;
+using System.IO;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace FerryWPF.Business.Repositories
 {
-    public class GenericRepository
+    public class GenericRepository : IGenericRepository
     {
-        private string connectionString = @"Data Source=.\FerryDB.sqlite; Version=3;";
+        private static readonly string configPath = Path.Combine("..", "..", "", "config.json");
+        private static readonly string jsonContent = File.ReadAllText(configPath);
+        private static readonly Dictionary<string, string> jsonDic = JsonConvert.DeserializeObject<Dictionary<string, string>>(jsonContent);
+        private readonly string connectionString = jsonDic["connectionString"];
 
-        public GenericRepository()
-        {
-
-        }
-
-         /// <summary>
+        /// <summary>
         /// Add data in correct SQL tabke.
         /// </summary>
         public int Insert<T>(T data)
@@ -34,15 +28,15 @@ namespace FerryWPF.Business.Repositories
                 // Get the properties of the generic type
                 PropertyInfo[] properties = typeof(T).GetProperties();
                 // Create a parameterized SQL insert query
-                string query = $"INSERT INTO {tableName} ({string.Join(", ", properties.Where(p => p.Name != "id").Select(p => p.Name))}) " +
-                               $"VALUES ({string.Join(", ", properties.Where(p => p.Name != "id").Select(p => $"@{p.Name}"))});" +
+                string query = $"INSERT INTO {tableName} ({string.Join(", ", properties.Where(p => p.Name != "Id").Select(p => p.Name))}) " +
+                               $"VALUES ({string.Join(", ", properties.Where(p => p.Name != "Id").Select(p => $"@{p.Name}"))});" +
                                $"SELECT last_insert_rowid();";
                 using (SQLiteCommand command = new SQLiteCommand(query, connection))
                 {
                     // Add parameters and set their values from the class object
                     foreach (PropertyInfo property in properties)
                     {
-                        command.Parameters.AddWithValue($"@{property.Name}", property.GetValue(data));
+                        _ = command.Parameters.AddWithValue($"@{property.Name}", property.GetValue(data));
                     }
                     // Execute the query
                     return Convert.ToInt32(command.ExecuteScalar());
@@ -58,7 +52,7 @@ namespace FerryWPF.Business.Repositories
                 connection.Open();
                 using (SQLiteCommand command = new SQLiteCommand(query, connection))
                 {
-                    command.ExecuteNonQuery();
+                    _ = command.ExecuteNonQuery();
                 }
             }
         }
@@ -71,7 +65,7 @@ namespace FerryWPF.Business.Repositories
                 connection.Open();
                 using (SQLiteCommand command = new SQLiteCommand(query, connection))
                 {
-                    command.ExecuteNonQuery();
+                    _ = command.ExecuteNonQuery();
                 }
             }
         }
@@ -89,6 +83,21 @@ namespace FerryWPF.Business.Repositories
             }
         }
 
+        public double GetWorkerSalary_ThisMonth()
+        {
+            string today = DateTime.Now.ToString("o");
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                // todo; use > command, remove like
+                string query = $"SELECT SUM(CardPrice)/10 FROM Vehicle WHERE DateEntered LIKE'{today.Substring(0, 7)}%';";
+                connection.Open();
+                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                {
+                    return (double)command.ExecuteScalar();
+                }
+            }
+        }
+
         public void UpdateFuel(int id)
         {
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
@@ -97,7 +106,7 @@ namespace FerryWPF.Business.Repositories
                 connection.Open();
                 using (SQLiteCommand command = new SQLiteCommand(query, connection))
                 {
-                    command.ExecuteNonQuery();
+                    _ = command.ExecuteNonQuery();
                 }
             }
         }

@@ -1,12 +1,10 @@
-﻿using FerryWPF.Business.View;
+﻿using FerryWPF.Business.Repositories;
+using FerryWPF.Business.Services;
+using FerryWPF.Business.VievModel;
+using FerryWPF.Business.View;
+using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace FerryWPF
 {
@@ -15,11 +13,27 @@ namespace FerryWPF
     /// </summary>
     public partial class App : Application
     {
-        private void OnStartup(object sender, StartupEventArgs e)
+        private readonly IServiceProvider _serviceProvider;
+
+        public App()
         {
-            var view = new MainWindovPort();
-            view.Show();
+            IServiceCollection services = new ServiceCollection();
+            _ = services.AddSingleton<MainVievModel>();
+
+            _ = services.AddSingleton(s => new MainWindovPort(
+                  s.GetRequiredService<MainVievModel>()
+                  ));
+            _ = services.AddSingleton<IGenericRepository>(s => new GenericRepository());
+            _ = services.AddSingleton<IPortService>(s => new PortService(s.GetRequiredService<GenericRepository>()));
+            _serviceProvider = services.BuildServiceProvider();
         }
 
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            MainWindovPort MainWindovPortStart = _serviceProvider.GetRequiredService<MainWindovPort>();
+            MainWindovPortStart.Show();
+
+            base.OnStartup(e);
+        }
     }
 }

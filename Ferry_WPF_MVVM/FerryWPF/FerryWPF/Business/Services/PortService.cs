@@ -1,23 +1,17 @@
-﻿using FerryWPF.Business.Models;
-using FerryWPF.Business.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FerryWPF.Business.Repositories;
 
 namespace FerryWPF.Business.Services
 {
-    public class PortService
+    public class PortService : IPortService
     {
-        private GenericRepository _genericRepository;
+        private readonly IGenericRepository _genericRepository;
 
-        public PortService()
+        public PortService(GenericRepository genericRepository)
         {
-            _genericRepository = new GenericRepository();
+            _genericRepository = genericRepository;
         }
 
-        public int Insert<T>(T el)   
+        public int Insert<T>(T el)
         {
             return _genericRepository.Insert(el);
         }
@@ -25,6 +19,11 @@ namespace FerryWPF.Business.Services
         public double GetWorkerSalary()
         {
             return _genericRepository.GetWorkerSalary();
+        }
+
+        public double GetWorkerSalary_ThisMonth()
+        {
+            return _genericRepository.GetWorkerSalary_ThisMonth();
         }
 
         public void UpdateNameInVehicle(int id, string name)
@@ -51,6 +50,5 @@ namespace FerryWPF.Business.Services
         {
             return _genericRepository.WhichType(id);
         }
-
     }
 }

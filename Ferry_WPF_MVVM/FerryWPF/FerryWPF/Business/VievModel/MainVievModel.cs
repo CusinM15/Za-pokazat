@@ -1,4 +1,6 @@
 ﻿using FerryWPF.Business.Infractructure;
+using FerryWPF.Business.Repositories;
+using FerryWPF.Business.Services;
 using FerryWPF.Business.View;
 using System.Windows;
 using System.Windows.Input;
@@ -15,11 +17,10 @@ namespace FerryWPF.Business.VievModel
 
         private void OnChangeName(object obj)
         {
-            Terminal newWin = new Terminal();
+            Terminal newWin = new Terminal(new TerminalViewModel(new PortService(new GenericRepository())));
             newWin.Show();
             Window Win = obj as Window;
             Win.Close();
         }
     }
-
 }

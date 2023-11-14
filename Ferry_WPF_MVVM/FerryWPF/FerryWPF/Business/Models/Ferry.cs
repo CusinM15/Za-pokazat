@@ -2,10 +2,10 @@
 {
     public class Ferry
     {
-        public int idFerrySize { get; set; }
+        public int IdFerrySize { get; set; }
         public Ferry(int idS)
         {
-            idFerrySize = idS;
+            IdFerrySize = idS;
         }
     }
 }

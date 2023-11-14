@@ -4,8 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Terminal" Height="450" Width="800" Icon="Ferry.png"
-        xmlns:VM="clr-namespace:FerryWPF.Business.VievModel">
+        Title="Terminal" Height="550" Width="1200" Icon="Ferry.png"
+        xmlns:VM="clr-namespace:FerryWPF.Business.VievModel"
+       >
+   
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
@@ -14,22 +16,26 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
-        <Label FontSize="20 pt" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Content="Terminal" HorizontalAlignment="Center"/>
-        <Button x:Name="startBTN" Grid.Column="1" Grid.Row="6" Content="START"  Command="{Binding GoToCommand}" IsEnabled="{Binding HideBtn}" Grid.ColumnSpan="2" Margin="622,68,-0.4,0" />
-        <Label x:Name="arrival" FontSize="20 pt" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Content="{Binding ArrivalText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" />
-        <Label x:Name="fuel" FontSize="20 pt" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Content="{Binding FuelText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" />
-        <Label x:Name="doorO" FontSize="20 pt" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" Content="{Binding DoorOpen, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" />
-        <Label x:Name="doorC" FontSize="20 pt" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="4" Content="{Binding DoorClose, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" />
-        <Label x:Name="load" FontSize="20 pt" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="5" Content="{Binding LoadText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" />
-        <Label Content="{Binding WorkerSalary}" Grid.Column="1" HorizontalAlignment="Left" Height="52" Margin="10,58,0,0" Grid.Row="6" VerticalAlignment="Top" Width="172"/>
-        <Label Content="Worker's salary:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,18,0,0" Grid.Row="6" VerticalAlignment="Top" Height="39" Width="159"/>
+        <DataGrid FontSize="30" MinRowHeight="59" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="3" AlternatingRowBackground="LightGray"  GridLinesVisibility="None"
+                   ItemsSource="{Binding ListText}" AutoGenerateColumns="false" CanUserAddRows="false" Margin="10,50,40,103">
+            <DataGrid.Columns>
+                <DataGridTextColumn FontStyle="Italic" Header="Terminal" Binding="{Binding TextParameter}" />
+            </DataGrid.Columns>
+
+        </DataGrid>
+        <Button x:Name="startBTN" Grid.Column="1" Grid.Row="2" Content="START" Command="{Binding GoToCommand}"
+                IsEnabled="{Binding HideBtn}" Margin="805,0,40,0" Grid.ColumnSpan="2" />
+        <Label Content="{Binding WorkerSalary}" ContentStringFormat="c" Language="sl-si"  Grid.Column="1" HorizontalAlignment="Left" Height="52" Margin="153,58,0,-2" Grid.Row="2" 
+               VerticalAlignment="top" Width="172"/>
+        <Label Content="Worker's salary:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,58,0,0" Grid.Row="6" 
+               VerticalAlignment="Top" Height="39" Width="159"/>
+        <Label Content="{Binding WorkerSalary_ThisMonth}" ContentStringFormat="c" Language="sl-si" Grid.Column="1" HorizontalAlignment="Left" Height="52" Margin="153,18,0,-2" Grid.Row="2" 
+               VerticalAlignment="top" Width="172"/>
+        <Label Content="Salary of this month:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,18,0,0" Grid.Row="6" 
+               VerticalAlignment="Top" Height="39" Width="159"/>
 
 
     </Grid>

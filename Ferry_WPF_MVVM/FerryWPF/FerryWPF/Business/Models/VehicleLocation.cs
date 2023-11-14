@@ -2,13 +2,13 @@
 {
     public class VehicleLocation
     {
-        private int _id { get; set; }
-        public int idVehicle { get; set; }
-        public int idLocation { get; set; }
+        private int Id { get; set; }
+        public int IdVehicle { get; set; }
+        public int IdLocation { get; set; }
         public VehicleLocation(int veh, int loc)
         {
-            idLocation = loc;
-            idVehicle = veh;
+            IdLocation = loc;
+            IdVehicle = veh;
         }
     }
 }

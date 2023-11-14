@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace FerryWPF.Business.Infractructure
@@ -16,9 +12,15 @@ namespace FerryWPF.Business.Infractructure
             _executeAction = executeAction;
         }
 
-        public void Execute(object parameter) => _executeAction(parameter);
+        public void Execute(object parameter)
+        {
+            _executeAction(parameter);
+        }
 
-        public bool CanExecute(object parameter) => true;
+        public bool CanExecute(object parameter)
+        {
+            return true;
+        }
 
         public event EventHandler CanExecuteChanged;
     }

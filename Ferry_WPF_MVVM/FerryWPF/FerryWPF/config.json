@@ -1,0 +1,3 @@
+﻿{
+  "connectionString" : "Data Source=.\\FerryDB.sqlite; Version=3;"
+}
