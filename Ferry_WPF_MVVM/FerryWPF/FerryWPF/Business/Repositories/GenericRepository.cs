@@ -93,7 +93,9 @@ namespace FerryWPF.Business.Repositories
                 connection.Open();
                 using (SQLiteCommand command = new SQLiteCommand(query, connection))
                 {
-                    return (double)command.ExecuteScalar();
+                    
+                    try { return (double)command.ExecuteScalar(); }
+                    catch { return 0; }
                 }
             }
         }
